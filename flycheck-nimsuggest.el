@@ -4,7 +4,7 @@
 
 ;; Author: Yuta Yamada <cokesboy"at"gmail.com>
 
-;; Package-Requires: ((flycheck "0.24"))
+;; Package-Requires: ((flycheck "0.24") (nim-mode "0.4.1"))
 
 ;;; License:
 ;; This program is free software: you can redistribute it and/or modify
@@ -30,15 +30,17 @@
 ;; from Emacs 26, this package is moved outside of nim-mode repository
 ;; be moved to other repository on the future (for less dependencies as well).
 
-;; Manual setup:
-;;     ;; write below configuration in your init file.
-;;     (add-hook 'nimsuggest-mode-hook 'flycheck-nimsuggest-setup)
+;; Configuration:
+;;
+;;    (add-hook 'nimsuggest-mode-hook 'flycheck-nimsuggest-setup)
+;;
 
 ;; TODO: move this package to MELPA
 
 ;;; Code:
 
 (require 'flycheck)
+(require 'nim-suggest)
 (require 'cl-lib)
 
 ;;;###autoload
@@ -47,9 +49,6 @@
 (defvar nim-use-flycheck-nimsuggest t
   "Set nil if you really don’t want to use flycheck-nimsuggest.
 Mainly this variable is debug purpose.")
-
-(autoload 'nimsuggest--call-epc "nim-suggest")
-(autoload 'nimsuggest-available-p "nim-suggest")
 
 (defvar flycheck-nimsuggest-error-parser 'flycheck-nimsuggest-error-parser
   "Error parser that parse nimsuggest's erorrs.
