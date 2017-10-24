@@ -46,7 +46,7 @@
 ;;;###autoload
 (add-hook 'nimsuggest-mode-hook 'flycheck-nimsuggest-setup)
 
-(defvar nim-use-flycheck-nimsuggest t
+(defvar flycheck-nimsuggest-use t
   "Set nil if you really don’t want to use flycheck-nimsuggest.
 Mainly this variable is debug purpose.")
 
@@ -70,7 +70,7 @@ You may use `flycheck-parse-with-patterns' symbol if you use old nimsuggest.")
 (put 'nim-nimsuggest 'flycheck-error-patterns flycheck-nimsuggest-patterns)
 
 ;;;###autoload
-(defun flycheck-nim-nimsuggest-start (checker callback)
+(defun flycheck-nimsuggest-start (checker callback)
   "Start nimsuggest’s ‘chk’ method syntax check with CHECKER.
 
 CALLBACK is the status callback passed by Flycheck."
@@ -126,6 +126,12 @@ See URL `https://github.com/nim-lang/nimsuggest'."
                          (nimsuggest-available-p))))
 
      (add-to-list 'flycheck-checkers 'nim-nimsuggest)))
+
+;; backward compatibility with current nim-mode
+(define-obsolete-variable-alias
+  'nim-use-flycheck-nimsuggest 'flycheck-nimsuggest-use "Oct/24/2017")
+(define-obsolete-function-alias
+  'flycheck-nim-nimsuggest-start 'flycheck-nimsuggest-start "Oct/24/2017")
 
 (provide 'flycheck-nimsuggest)
 
