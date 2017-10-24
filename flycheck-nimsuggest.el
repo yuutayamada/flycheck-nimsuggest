@@ -30,7 +30,6 @@
 
 ;; Because of introducing new flymake (https://lists.gnu.org/archive/html/emacs-devel/2017-09/msg00953.html)
 ;; from Emacs 26, this package is moved outside of nim-mode repository
-;; be moved to other repository on the future (for less dependencies as well).
 
 ;; Configuration:
 ;;
