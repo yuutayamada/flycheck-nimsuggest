@@ -115,22 +115,20 @@ CHECKER and BUFFER are passed to flycheck's function."
              (not (bound-and-true-p flymake-mode))
              (funcall 'nimsuggest-available-p)
              (not flycheck-checker))
+    (add-to-list 'flycheck-checkers 'nim-nimsuggest)
     (flycheck-select-checker 'nim-nimsuggest)))
 
-;;;###autoload
-(eval-after-load "flycheck"
-  '(progn
-     (flycheck-define-generic-checker 'nim-nimsuggest
-       "A syntax checker for Nim lang using nimsuggest.
+;; For my remainder, don't autoload generic checker
+;; https://github.com/melpa/melpa/pull/5081
+(flycheck-define-generic-checker 'nim-nimsuggest
+  "A syntax checker for Nim lang using nimsuggest.
 
 See URL `https://github.com/nim-lang/nimsuggest'."
-       :start 'flycheck-nimsuggest-start
-       :modes '(nim-mode nimscript-mode)
-       :predicate (lambda () (and
-                         (bound-and-true-p flycheck-nimsuggest-use)
-                         (nimsuggest-available-p))))
-
-     (add-to-list 'flycheck-checkers 'nim-nimsuggest)))
+  :start 'flycheck-nimsuggest-start
+  :modes '(nim-mode nimscript-mode)
+  :predicate (lambda () (and
+                    (bound-and-true-p flycheck-nimsuggest-use)
+                    (nimsuggest-available-p))))
 
 ;; backward compatibility with current nim-mode
 (define-obsolete-variable-alias
