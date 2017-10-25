@@ -5,7 +5,7 @@
 ;; Author: Yuta Yamada <cokesboy"at"gmail.com>
 
 ;; Version: 0.8.1
-;; Package-Requires: ((flycheck "0.23") (nim-mode "0.4.1") (emacs "24"))
+;; Package-Requires: ((flycheck "0.23") (nim-mode "0.4.1") (emacs "24.3"))
 ;; URL: https://github.com/yuutayamada/flycheck-nimsuggest
 
 ;;; License:
