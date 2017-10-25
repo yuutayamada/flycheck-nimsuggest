@@ -35,8 +35,8 @@
 ;; Manual configuration:
 ;;
 ;; If you install this package from MELPA, probably this package
-;; should work automatically, but if not, please use below manual
-;; configuration.
+;; should work automatically, (if you followed nim-mode's instruction)
+;; but if not, please use below manual configuration.
 
 ;; ``` elisp
 ;; (add-hook 'nimsuggest-mode-hook 'flycheck-nimsuggest-setup)
@@ -59,6 +59,8 @@ Mainly this variable is debug purpose.")
   "Error parser that parse nimsuggest's erorrs.
 You may use `flycheck-parse-with-patterns' symbol if you use old nimsuggest.")
 
+;; TODO: not sure when to remove this function... This functions was
+;; used old Nim and Nimsuggest
 (defvar flycheck-nimsuggest-patterns
   (mapcar (lambda (p)
             (cons (flycheck-rx-to-string `(and ,@(cdr p)) 'no-group)
@@ -120,6 +122,7 @@ CHECKER and BUFFER are passed to flycheck's function."
 
 ;; For my remainder, don't autoload generic checker
 ;; https://github.com/melpa/melpa/pull/5081
+;; Thanks purcell!
 (flycheck-define-generic-checker 'nim-nimsuggest
   "A syntax checker for Nim lang using nimsuggest.
 
